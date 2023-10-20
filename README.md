@@ -1,1 +1,3 @@
 # Vincent-van-Gogh
+# Life in Art: A Study of the Life of Vincent van Gogh through his Artwork
+# The Starry Night is the view of the sky, just before sunrise, from the window of St. Remy, the hospital where van Gogh spent his creative years following a series of psychiatric episodes. Many argue that the artistic difference between van Gogh's paintings at the start and end of his life can be accounted to his mental illnesses. After analysing multiple data sets relating to van Gogh's paintings and his life using various machine learning techniques, it was found that there were artistic difference in his style of paintings before and after the start of his psychiatric episodes.
