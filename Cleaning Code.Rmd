@@ -1,0 +1,38 @@
+---
+title: "Essay Code"
+author: "IBDS"
+date: "2023-01-18"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+art <- read.csv("formatted_results.csv", header = TRUE)
+```
+
+```{r}
+art$date <- as.Date(art$date)
+```
+
+```{r}
+art$year <- as.numeric(format(art$date, "%Y"))
+```
+
+```{r}
+f_art <- art %>% 
+  select(id, year, type, value) %>% 
+  group_by(id, type, year) %>% 
+  summarise(value = mean(value)) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = "type", values_from = "value") %>% 
+  mutate(group = if_else(year < 1888, "Before", "After")) %>% 
+  mutate(life = if_else(year < 1881, "Beginning", if_else(year >= 1881 & year <= 1883, "Novice Artist", if_else(year > 1883 & year <= 1885, "Peasant Painter", if_else(year > 1885 & year < 1888, "Dark", if_else(year >= 1888 & year <= 1889, "France", "Final")))))) %>% 
+  glimpse
+```
+
+```{r}
+write.csv(f_art, file = "C:\\Users\\sarah\\OneDrive\\Documents\\BDS\\Term 1\\IBDS\\Essay\\Data\\art_ratings.csv", row.names = FALSE)
+```
